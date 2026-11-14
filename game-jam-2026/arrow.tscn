@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ckbatrkwowa3x"]
+
+[ext_resource type="Script" uid="uid://bjslhid14pc7q" path="res://arrow.gd" id="1_l5ahi"]
+
+[sub_resource type="Gradient" id="Gradient_kks1g"]
+colors = PackedColorArray(0.3212924, 0.20508283, 0.027746439, 1, 0.32156864, 0.20392157, 0.02745098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aghsa"]
+gradient = SubResource("Gradient_kks1g")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssi1j"]
+size = Vector2(71, 10)
+
+[node name="Arrow" type="Area2D" unique_id=14306081]
+collision_mask = 4
+script = ExtResource("1_l5ahi")
+speed = 250.0
+max_distance = 75.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=125170196]
+scale = Vector2(0.14687501, 0.02954382)
+texture = SubResource("GradientTexture2D_aghsa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703053305]
+visible = false
+position = Vector2(0.5, 0)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_ssi1j")
