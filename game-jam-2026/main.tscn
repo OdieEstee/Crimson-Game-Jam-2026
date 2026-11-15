@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c6lbfc0vcy0uv"]
+
+[ext_resource type="Script" uid="uid://e40trbfhm8r1" path="res://character_body_2d.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cmtfa1hu1hyh4" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ccn2bya72e00d" path="res://character.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b41bscetpyjeq" path="res://bow.png" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://6f4hy2erg8pi" path="res://hud.tscn" id="5_lquwl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyhdk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h2yge")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+radius = 8.0
+height = 28.0
+
+[node name="Node2D" type="Node2D" unique_id=786010656]
+script = ExtResource("1_1bvp3")
+spawn_timer = 5.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=396631665]
+script = ExtResource("1_0xm2m")
+MAX_LIVES = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=514649537]
+sprite_frames = SubResource("SpriteFrames_oyhdk")
+animation = &"new_animation"
+
+[node name="Bow" type="Sprite2D" parent="CharacterBody2D" unique_id=1667887449]
+texture = ExtResource("3_h2yge")
+offset = Vector2(10, 0)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1977981452]
+zoom = Vector2(5, 5)
+
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D" unique_id=1179320713]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox" unique_id=223349947]
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[node name="HUD" parent="." unique_id=740164074 instance=ExtResource("5_lquwl")]
