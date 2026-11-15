@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dxvg0b8esytf4"]
+
+[ext_resource type="Script" uid="uid://d0sm5ay71u6b8" path="res://swipe.gd" id="1_y00qo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhdk"]
+size = Vector2(5, 33)
+
+[node name="Swipe" type="Area2D" unique_id=1975615885]
+collision_mask = 4
+script = ExtResource("1_y00qo")
+speed = 300.0
+max_distance = 30.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=395312979]
+offset_left = -2.0
+offset_top = -16.0
+offset_right = 2.0
+offset_bottom = 17.0
+color = Color(0.5749978, 0.57499784, 0.57499784, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=738059191]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_oyhdk")

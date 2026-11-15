@@ -4,6 +4,7 @@ signal lives_changed(lives: int, max_lives: int)
 
 @export var SPEED = 100.0
 @export var FIRE_RATE := 0.5
+@export var TRANSFORM_FIRE_RATE := 2.0
 @export var MAX_LIVES := 3.0
 @export var IMMUNITY_TIME := 1.0
 @export var TRANSFORM_TIME := 15.0
@@ -15,6 +16,7 @@ var immunity_cooldown := 0.0
 var transform_timer : float
 var is_transformed = false
 const ARROW_SCENE := preload("res://arrow.tscn")
+const SWIPE_SCENE := preload("res://swipe.tscn")
 
 func _ready() -> void:
 	lives = MAX_LIVES
@@ -51,6 +53,12 @@ func _physics_process(delta: float) -> void:
 		shot_cooldown = FIRE_RATE
 	#Bow and arrow end
 	
+	#Transform swipe start
+	if is_transformed and Input.is_action_pressed("Attack") and shot_cooldown <= 0.0:
+		swipe()
+		shot_cooldown = TRANSFORM_FIRE_RATE
+	#Transform swipe end
+	
 	#Damage check start
 	immunity_cooldown -= delta
 	if immunity_cooldown <= 0.0:
@@ -79,3 +87,10 @@ func shoot() -> void:
 	arrow.global_rotation = bow.global_rotation
 	arrow.direction = Vector2.RIGHT.rotated(bow.global_rotation)
 	get_tree().current_scene.add_child(arrow)
+
+func swipe() -> void:
+	var swipe := SWIPE_SCENE.instantiate()
+	swipe.global_position = bow.to_global(bow.offset)
+	swipe.global_rotation = bow.global_rotation
+	swipe.direction = Vector2.RIGHT.rotated(bow.global_rotation)
+	get_tree().current_scene.add_child(swipe)
