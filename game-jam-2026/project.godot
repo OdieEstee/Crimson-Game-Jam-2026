@@ -13,7 +13,6 @@ config_version=5
 config/name="Game Jam 2026"
 run/main_scene="uid://c6lbfc0vcy0uv"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
 
 [display]
 

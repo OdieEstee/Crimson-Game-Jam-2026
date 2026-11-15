@@ -1,6 +1,0 @@
-extends Resource
-class_name Stats
-
-@export var max_health: int = 100
-@export var defense: int = 10
-@export var health: int = 10

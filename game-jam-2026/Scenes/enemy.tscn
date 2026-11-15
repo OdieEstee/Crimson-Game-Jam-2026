@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjjc7vyw4033l"]
 
-[ext_resource type="Script" uid="uid://o0ocdlnlywlf" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://o0ocdlnlywlf" path="res://Scripts/enemy.gd" id="1_hghv2"]
 
 [sub_resource type="Gradient" id="Gradient_7xaro"]
 colors = PackedColorArray(0.5898064, 1.540184e-06, 3.85046e-07, 1, 0.5882353, 0, 0, 1)
@@ -14,13 +14,13 @@ height = 28.0
 
 [node name="Enemy" type="Area2D" unique_id=1095419009]
 collision_layer = 4
-script = ExtResource("1_7k104")
+script = ExtResource("1_hghv2")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=778504414]
+[node name="EnemyTexture" type="Sprite2D" parent="." unique_id=778504414]
 scale = Vector2(0.10937499, 0.43749997)
 texture = SubResource("GradientTexture2D_ssi1j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1109852866]
+[node name="EnemyCollisionBox" type="CollisionShape2D" parent="." unique_id=1109852866]
 shape = SubResource("CapsuleShape2D_ssi1j")
 
 [node name="HealthBar" type="Node2D" parent="." unique_id=650953695]

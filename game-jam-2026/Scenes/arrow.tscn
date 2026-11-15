@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckbatrkwowa3x"]
 
-[ext_resource type="Script" uid="uid://bjslhid14pc7q" path="res://arrow.gd" id="1_l5ahi"]
+[ext_resource type="Script" uid="uid://bjslhid14pc7q" path="res://Scripts/arrow.gd" id="1_2u0bd"]
 
 [sub_resource type="Gradient" id="Gradient_kks1g"]
 colors = PackedColorArray(0.3212924, 0.20508283, 0.027746439, 1, 0.32156864, 0.20392157, 0.02745098, 1)
@@ -13,15 +13,14 @@ size = Vector2(85.49999, 19.999998)
 
 [node name="Arrow" type="Area2D" unique_id=14306081]
 collision_mask = 4
-script = ExtResource("1_l5ahi")
-speed = 200.0
-max_distance = 150.0
+script = ExtResource("1_2u0bd")
+MAX_DISTANCE = 100.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=125170196]
+[node name="ArrowTexture" type="Sprite2D" parent="." unique_id=125170196]
 scale = Vector2(0.14687501, 0.02954382)
 texture = SubResource("GradientTexture2D_aghsa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703053305]
+[node name="ArrowCollisionBox" type="CollisionShape2D" parent="." unique_id=1703053305]
 position = Vector2(-0.27500027, -2.9802322e-08)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_ssi1j")
