@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dh0pi0sieuej0" path="res://Assets/heart.png" id="2_6fbih"]
 [ext_resource type="Texture2D" uid="uid://ctg5c66e121di" path="res://Assets/heart_empty.png" id="3_t1xeu"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wkxl"]
+bg_color = Color(0.06879827, 0.06879828, 0.06879828, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hbsc"]
+bg_color = Color(0, 0.6956519, 0.4283245, 1)
+
 [node name="HUD" type="CanvasLayer" unique_id=740164074]
 script = ExtResource("1_bjfho")
 heart_texture = ExtResource("2_6fbih")
@@ -21,12 +27,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="XP_Bar" type="ProgressBar" parent="Root" unique_id=1602055938]
+custom_minimum_size = Vector2(250, 15)
 layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = 835.0
+offset_top = 1020.0
+offset_right = 1085.0
+offset_bottom = 1046.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2wkxl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4hbsc")
 show_percentage = false
 
 [node name="XP_Label" type="Label" parent="Root" unique_id=688785349]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Level_label" type="Label" parent="Root" unique_id=2015078941]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 990.0
+offset_right = 935.0
+offset_bottom = 1015.0
+text = "Level 1"

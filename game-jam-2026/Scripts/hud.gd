@@ -8,6 +8,7 @@ extends CanvasLayer
 
 @onready var xp_bar: ProgressBar = $Root/XP_Bar
 @onready var xp_label: Label = $Root/XP_Label
+@onready var level_label: Label = $Root/Level_label
 
 # Function that is called when lives_changed signal is emitted from the Player
 func set_lives(lives: int, max_lives: int) -> void:
@@ -32,5 +33,4 @@ func set_xp(xp: int, xp_needed: int, level: int) -> void:
 	xp_bar.max_value = xp_needed # set maxium xp for current level
 	xp_bar.value = xp # set current xp
 	
-	xp_bar.tooltip_text = "level " + str(level) + " _ " + str(xp) + "/" + str(xp_needed) + "XP"
-	print("XP: ", xp, "/", xp_needed, " | Level: ", level)
+	level_label.text = "Level " + str(level)
