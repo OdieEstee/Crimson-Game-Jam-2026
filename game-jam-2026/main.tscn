@@ -27,7 +27,7 @@ spawn_timer = 5.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=396631665]
 script = ExtResource("1_0xm2m")
-MAX_LIVES = 5
+TRANSFORM_TIME = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=514649537]
 sprite_frames = SubResource("SpriteFrames_oyhdk")

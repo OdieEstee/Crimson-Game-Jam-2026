@@ -8,8 +8,6 @@ const ENEMY_SCENE := preload("res://enemy.tscn")
 @onready var camera: Camera2D = $CharacterBody2D/Camera2D
 @onready var hud = $HUD
 
-
-
 func _ready():
 	player.lives_changed.connect(hud.set_lives)
 	hud.set_lives(player.lives, player.MAX_LIVES)

@@ -4,13 +4,16 @@ signal lives_changed(lives: int, max_lives: int)
 
 @export var SPEED = 100.0
 @export var FIRE_RATE := 0.5
-@export var MAX_LIVES := 3
-@export var IMMUNITY_TIME := 1
+@export var MAX_LIVES := 3.0
+@export var IMMUNITY_TIME := 1.0
+@export var TRANSFORM_TIME := 15.0
 @onready var bow: Sprite2D = $Bow
 
 var lives : int
 var shot_cooldown := 0.0
 var immunity_cooldown := 0.0
+var transform_timer : float
+var is_transformed = false
 const ARROW_SCENE := preload("res://arrow.tscn")
 
 func _ready() -> void:
@@ -43,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	bow.flip_v = mouse_pos.x < global_position.x
 	
 	shot_cooldown -= delta
-	if Input.is_action_pressed("Attack") and shot_cooldown <= 0.0:
+	if Input.is_action_pressed("Attack") and shot_cooldown <= 0.0 and not is_transformed:
 		shoot()
 		shot_cooldown = FIRE_RATE
 	#Bow and arrow end
@@ -57,6 +60,18 @@ func _physics_process(delta: float) -> void:
 				immunity_cooldown = IMMUNITY_TIME
 				break
 	#Damage check end
+	
+	#Transform start
+	transform_timer -= delta
+	if transform_timer < 0:
+		is_transformed = false
+		$Bow.visible = true
+	if Input.is_action_just_pressed("Transform") and transform_timer < 0:
+		transform_timer = TRANSFORM_TIME
+		is_transformed = true
+		$Bow.visible = false
+		
+	#Transform end
 
 func shoot() -> void:
 	var arrow := ARROW_SCENE.instantiate()
