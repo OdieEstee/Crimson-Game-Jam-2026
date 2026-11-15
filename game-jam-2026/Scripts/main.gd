@@ -13,7 +13,11 @@ const ENEMY_SCENE := preload("res://Scenes/enemy.tscn") # Referenced scene for E
 func _ready():
 	# Connect lives_changed signal from player to set_lives(lives, max_lives) in HUD
 	player.lives_changed.connect(hud.set_lives)
+	# connect xp_changed signal from player to HUD
+	player.xp_changed.connect(hud.set_xp)
+	
 	hud.set_lives(player.lives, player.MAX_LIVES) # Match HUD lives to player lives
+	hud.set_xp(player.current_xp, player.xp_needed, player.current_level)#Sets the initial HUD value
 	
 	# Set up Enemy spawn timer in root
 	var timer := Timer.new()

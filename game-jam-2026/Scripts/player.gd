@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 signal lives_changed(lives: int, max_lives: int) # Signal for set_lives() in HUD
+signal xp_changed(xp: int, xp_needed: int, level: int) #Signal for XP bar in HUD
 
 @export var SPEED = 100.0 # Player speed
 @export var FIRE_RATE := 0.5 # Bow fire rate
 @export var TRANSFORM_FIRE_RATE := 2.0 # Swipe fire rate
 @export var MAX_LIVES := 3 # Total lives
+@export var XP_TO_NEXT_LEVEL := 100 # XP needed for first level
 @export var IMMUNITY_TIME := 1.0 # Time after taking damage the player is immune for
 @export var TRANSFORM_TIME := 15.0 # How long the player can be transformed for
 
@@ -17,11 +19,16 @@ var immunity_cooldown := 0.0 # Current immunity cooldown
 var transform_timer : float # Current time transformed
 var is_transformed = false # Binary tracking if the player is transformed or not
 
+var current_xp : int = 0 # current xp
+var current_level : int = 1 # current player level
+var xp_needed : int # XP needed for next level  
+
 const ARROW_SCENE := preload("res://Scenes/arrow.tscn")
 const SWIPE_SCENE := preload("res://Scenes/swipe.tscn")
 
 func _ready() -> void:
 	lives = MAX_LIVES # Set current lives to MAX_LIVES
+	xp_needed = XP_TO_NEXT_LEVEL # Set initial XP requirments
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -87,3 +94,16 @@ func take_damage(damage: int) -> void:
 	lives_changed.emit(lives, MAX_LIVES) # Emit lives_changed signal
 	if lives <= 0: # Dead check
 		queue_free()
+
+#Adds XP to Player and handles leveling up
+func gain_xp(amount : int) -> void:
+	current_xp += amount # increase current xp
+	
+	#check if player has enough xp to level up
+	while current_xp >= xp_needed:
+		current_xp -= xp_needed #carry over extra xp
+		current_level += 1 # increase player level
+		xp_needed = int(xp_needed * 1.25) # increases xp requirement by 25%
+		
+		print("Level UP! Current level: ", current_level)
+	xp_changed.emit(current_xp, xp_needed, current_level) #update XP bar in hub
