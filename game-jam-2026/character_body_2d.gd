@@ -1,10 +1,26 @@
 extends CharacterBody2D
 
+signal lives_changed(lives: int, max_lives: int)
+
 @export var SPEED = 100.0
 @export var FIRE_RATE := 0.5
+@export var MAX_LIVES := 3
+@export var IMMUNITY_TIME := 1
 @onready var bow: Sprite2D = $Bow
+
+var lives : int
 var shot_cooldown := 0.0
+var immunity_cooldown := 0.0
 const ARROW_SCENE := preload("res://arrow.tscn")
+
+func _ready() -> void:
+	lives = MAX_LIVES
+
+func take_damage(damage: int) -> void:
+	lives -= damage
+	lives_changed.emit(lives, MAX_LIVES)
+	if lives <= 0:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	#Player movement start
@@ -31,6 +47,16 @@ func _physics_process(delta: float) -> void:
 		shoot()
 		shot_cooldown = FIRE_RATE
 	#Bow and arrow end
+	
+	#Damage check start
+	immunity_cooldown -= delta
+	if immunity_cooldown <= 0.0:
+		for area in $Hitbox.get_overlapping_areas():
+			if area is Enemy:
+				take_damage(area.damage)
+				immunity_cooldown = IMMUNITY_TIME
+				break
+	#Damage check end
 
 func shoot() -> void:
 	var arrow := ARROW_SCENE.instantiate()

@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var speed: float = 600.0
+@export var damage := 5.0
+@export var speed: float = 150.0
 @export var max_distance: float = 400.0
 @export var decay_time: int = 2
 @export var decay_color := Color(0.398, 0.398, 0.398, 1.0)
@@ -24,5 +25,6 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if not distance_traveled >= max_distance:
-		area.queue_free()
+		if area is Enemy:
+			area.take_damage(damage)
 		queue_free()

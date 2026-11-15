@@ -6,10 +6,13 @@ const ENEMY_SCENE := preload("res://enemy.tscn")
 
 @onready var player: CharacterBody2D = $CharacterBody2D
 @onready var camera: Camera2D = $CharacterBody2D/Camera2D
+@onready var hud = $HUD
 
 
 
 func _ready():
+	player.lives_changed.connect(hud.set_lives)
+	hud.set_lives(player.lives, player.MAX_LIVES)
 	var timer := Timer.new()
 	timer.wait_time = spawn_timer
 	timer.autostart = true

@@ -22,3 +22,20 @@ texture = SubResource("GradientTexture2D_ssi1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1109852866]
 shape = SubResource("CapsuleShape2D_ssi1j")
+
+[node name="HealthBar" type="Node2D" parent="." unique_id=650953695]
+position = Vector2(0, -18)
+
+[node name="Background" type="ColorRect" parent="HealthBar" unique_id=285403809]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
+
+[node name="Fill" type="ColorRect" parent="HealthBar" unique_id=1483768656]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 2.0
+color = Color(0.19998118, 0.6916717, 0, 1)
