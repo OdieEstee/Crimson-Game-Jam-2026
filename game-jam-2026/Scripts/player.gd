@@ -123,7 +123,9 @@ func gain_xp(amount : int) -> void:
 		current_xp -= xp_needed #carry over extra xp
 		current_level += 1 # increase player level
 		leveled_up.emit()
+		Stats.SPAWN_TIMER *= 0.5
 		xp_needed = int(xp_needed * 1.25) # increases xp requirement by 25%
 		
 		print("Level UP! Current level: ", current_level)
+		print("Spawn time: ", Stats.SPAWN_TIMER)
 	xp_changed.emit(current_xp, xp_needed, current_level) #update XP bar in hub
