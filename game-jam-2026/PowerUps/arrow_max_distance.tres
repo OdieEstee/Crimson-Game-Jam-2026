@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PowerUp" format=3 uid="uid://dve61ngt3goqb"]
+
+[ext_resource type="Script" uid="uid://ckr4834bdneg7" path="res://Scripts/PowerUps/stat_modifier.gd" id="1_mkjjr"]
+[ext_resource type="Script" uid="uid://c1nayork34hiv" path="res://Scripts/PowerUps/power_up.gd" id="2_862e5"]
+
+[resource]
+script = ExtResource("2_862e5")
+metadata/_custom_type_script = "uid://c1nayork34hiv"
