@@ -13,7 +13,7 @@ animations = [{
 "texture": ExtResource("3_6bp64")
 }],
 "loop": 1,
-"name": &"idle_idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -52,9 +52,8 @@ script = ExtResource("1_kry3j")
 script = ExtResource("2_21xkr")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="Player" unique_id=514649537]
-visible = false
 sprite_frames = SubResource("SpriteFrames_oyhdk")
-animation = &"run_up"
+animation = &"idle"
 
 [node name="Bow" type="Sprite2D" parent="Player" unique_id=1667887449]
 texture = ExtResource("4_344ge")

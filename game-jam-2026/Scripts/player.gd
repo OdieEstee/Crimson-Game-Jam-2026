@@ -101,7 +101,7 @@ func process_animation() -> void:
 		last_direction = velocity.normalized()
 		play_animation("run", last_direction)
 	else:
-		play_animation("idle", last_direction)
+		play_animation("", last_direction)
 
 func play_animation(prefix: String, dir: Vector2) -> void:
 		if dir.x != 0 && velocity != Vector2.ZERO:
@@ -112,7 +112,7 @@ func play_animation(prefix: String, dir: Vector2) -> void:
 		elif dir.y > 0 && velocity != Vector2.ZERO:
 			player_animation.play(prefix + "_down")
 		else:
-			player_animation.play(prefix + "_idle")
+			player_animation.play("idle")
 
 #Adds XP to Player and handles leveling up
 func gain_xp(amount : int) -> void:
