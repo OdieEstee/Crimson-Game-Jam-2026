@@ -11,7 +11,7 @@ collision_mask = 4
 script = ExtResource("1_2u0bd")
 
 [node name="ArrowTexture" type="Sprite2D" parent="." unique_id=125170196]
-scale = Vector2(0.14687501, 0.02954382)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h5x2m")
 
 [node name="ArrowCollisionBox" type="CollisionShape2D" parent="." unique_id=1703053305]

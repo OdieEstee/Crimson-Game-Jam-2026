@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://dxvg0b8esytf4"]
 
 [ext_resource type="Script" uid="uid://d0sm5ay71u6b8" path="res://Scripts/swipe.gd" id="1_y00qo"]
+[ext_resource type="Texture2D" uid="uid://d25vvpl5n0bnx" path="res://Lyds sprites/Coug AttackUp No back.png" id="2_81p7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhdk"]
-size = Vector2(5, 33)
+size = Vector2(4.5, 25)
 
 [node name="Swipe" type="Area2D" unique_id=1975615885]
 collision_mask = 4
 script = ExtResource("1_y00qo")
-SPEED = 200.0
-MAX_DISTANCE = 25.0
 
-[node name="SwipeTexture" type="ColorRect" parent="." unique_id=395312979]
-offset_left = -2.0
-offset_top = -16.0
-offset_right = 2.0
-offset_bottom = 17.0
-color = Color(0.5749978, 0.57499784, 0.57499784, 1)
+[node name="SwipeTexture" type="Sprite2D" parent="." unique_id=420033481]
+position = Vector2(-4, -5)
+rotation = 0.9289271
+texture = ExtResource("2_81p7l")
 
 [node name="SwipeCollisionBox" type="CollisionShape2D" parent="." unique_id=738059191]
-position = Vector2(0, 0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_oyhdk")
