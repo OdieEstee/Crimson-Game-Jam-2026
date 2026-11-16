@@ -11,6 +11,7 @@ signal xp_changed(xp: int, xp_needed: int, level: int) #Signal for XP bar in HUD
 @export var IMMUNITY_TIME := 1.0 # Time after taking damage the player is immune for
 @export var TRANSFORM_TIME := 15.0 # How long the player can be transformed for
 
+@onready var player_animation: AnimatedSprite2D = $PlayerAnimation
 @onready var bow: Sprite2D = $Bow # Bow node
 
 var lives : int # Current lives
@@ -18,6 +19,7 @@ var shot_cooldown := 0.0 # Current shot cooldown
 var immunity_cooldown := 0.0 # Current immunity cooldown
 var transform_timer : float # Current time transformed
 var is_transformed = false # Binary tracking if the player is transformed or not
+var last_direction: Vector2 = Vector2.DOWN
 
 var current_xp : int = 0 # current xp
 var current_level : int = 1 # current player level
@@ -29,6 +31,10 @@ const SWIPE_SCENE := preload("res://Scenes/swipe.tscn")
 func _ready() -> void:
 	lives = MAX_LIVES # Set current lives to MAX_LIVES
 	xp_needed = XP_TO_NEXT_LEVEL # Set initial XP requirments
+	
+	player_animation.visible = true
+	player_animation.play("idle")
+	player_animation.frame = 0
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -38,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
+	process_animation()
 
 	# Attack functionality
 	var mouse_pos := get_global_mouse_position() # Find mouse position
@@ -94,6 +101,24 @@ func take_damage(damage: int) -> void:
 	lives_changed.emit(lives, MAX_LIVES) # Emit lives_changed signal
 	if lives <= 0: # Dead check
 		queue_free()
+
+func process_animation() -> void:
+	if velocity != Vector2.ZERO:
+		last_direction = velocity.normalized()
+		play_animation("run", last_direction)
+	else:
+		play_animation("idle", last_direction)
+
+func play_animation(prefix: String, dir: Vector2) -> void:
+		if dir.x != 0 && velocity != Vector2.ZERO:
+			player_animation.flip_h = dir.x < 0
+			player_animation.play(prefix + "_right")
+		elif dir.y < 0 && velocity != Vector2.ZERO:
+			player_animation.play(prefix + "_up")
+		elif dir.y > 0 && velocity != Vector2.ZERO:
+			player_animation.play(prefix + "_down")
+		else:
+			player_animation.play(prefix + "_idle")
 
 #Adds XP to Player and handles leveling up
 func gain_xp(amount : int) -> void:
