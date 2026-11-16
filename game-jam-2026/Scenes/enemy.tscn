@@ -10,8 +10,8 @@ colors = PackedColorArray(0.5898064, 1.540184e-06, 3.85046e-07, 1, 0.5882353, 0,
 gradient = SubResource("Gradient_7xaro")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssi1j"]
-radius = 3.0
-height = 28.0
+radius = 4.0
+height = 36.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afpow"]
 atlas = ExtResource("2_1f0kj")
@@ -51,10 +51,12 @@ scale = Vector2(0.10937499, 0.43749997)
 texture = SubResource("GradientTexture2D_ssi1j")
 
 [node name="EnemyCollisionBox" type="CollisionShape2D" parent="." unique_id=1109852866]
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_ssi1j")
 
 [node name="HealthBar" type="Node2D" parent="." unique_id=650953695]
-position = Vector2(0, -18)
+position = Vector2(0, -28)
+scale = Vector2(2, 1)
 
 [node name="Background" type="ColorRect" parent="HealthBar" unique_id=285403809]
 offset_left = -3.0

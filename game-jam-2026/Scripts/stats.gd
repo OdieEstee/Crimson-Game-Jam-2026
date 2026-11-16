@@ -11,7 +11,7 @@ var PLAYER_MAX_LIVES := 5 # Total lives
 var player_lives : int
 var PLAYER_XP_TO_NEXT_LEVEL := 100 # XP needed for first level
 var PLAYER_IMMUNITY_TIME := 1.0 # Time after taking damage the player is immune for
-var PLAYER_TRANSFORM_TIME := 15.0 # How long the player can be transformed for
+var PLAYER_TRANSFORM_TIME := 5.0 # How long the player can be transformed for
 
 # Enemy stats
 var ENEMY_SPEED := 40.0 # Enemy speed

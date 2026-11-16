@@ -99,20 +99,22 @@ func take_damage(damage: int) -> void:
 func process_animation() -> void:
 	if velocity != Vector2.ZERO:
 		last_direction = velocity.normalized()
-		play_animation("run", last_direction)
+		if not is_transformed:
+			play_animation("run", last_direction)
+		else:
+			play_animation("coug", last_direction)
 	else:
-		play_animation("", last_direction)
+		if not is_transformed:
+			player_animation.play("idle")
+		else:
+			player_animation.play("coug idle")
 
 func play_animation(prefix: String, dir: Vector2) -> void:
-		if dir.x != 0 && velocity != Vector2.ZERO:
-			player_animation.flip_h = dir.x < 0
-			player_animation.play(prefix + "_right")
-		elif dir.y < 0 && velocity != Vector2.ZERO:
-			player_animation.play(prefix + "_up")
-		elif dir.y > 0 && velocity != Vector2.ZERO:
-			player_animation.play(prefix + "_down")
-		else:
-			player_animation.play("idle")
+	if not is_transformed:
+		player_animation.flip_h = dir.x > 0
+	else:
+		player_animation.flip_h = dir.x < 0
+	player_animation.play(prefix + "_right")
 
 #Adds XP to Player and handles leveling up
 func gain_xp(amount : int) -> void:
@@ -123,7 +125,8 @@ func gain_xp(amount : int) -> void:
 		current_xp -= xp_needed #carry over extra xp
 		current_level += 1 # increase player level
 		leveled_up.emit()
-		Stats.SPAWN_TIMER *= 0.5
+		Stats.SPAWN_TIMER *= 0.9
+		Stats.ENEMY_HEALTH *= 1.2
 		xp_needed = int(xp_needed * 1.25) # increases xp requirement by 25%
 		
 		print("Level UP! Current level: ", current_level)
