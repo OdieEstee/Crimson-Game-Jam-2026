@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PowerUp" format=3 uid="uid://b87nblunpkj1j"]
+
+[ext_resource type="Script" uid="uid://ckr4834bdneg7" path="res://Scripts/PowerUps/stat_modifier.gd" id="1_6tqnj"]
+[ext_resource type="Script" uid="uid://c1nayork34hiv" path="res://Scripts/PowerUps/power_up.gd" id="2_0blqa"]
+
+[sub_resource type="Resource" id="Resource_83vwc"]
+script = ExtResource("1_6tqnj")
+stat = "PLAYER_FIRE_RATE"
+value = 0.8
+metadata/_custom_type_script = "uid://ckr4834bdneg7"
+
+[resource]
+script = ExtResource("2_0blqa")
+title = "Quick Draw"
+description = "+25% Fire Rate"
+modifiers = Array[ExtResource("1_6tqnj")]([SubResource("Resource_83vwc")])
+metadata/_custom_type_script = "uid://c1nayork34hiv"

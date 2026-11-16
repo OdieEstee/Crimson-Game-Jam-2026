@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6f4hy2erg8pi"]
 
-[ext_resource type="Script" uid="uid://eor2d1351xfm" path="res://scripts/hud.gd" id="1_bjfho"]
+[ext_resource type="Script" uid="uid://eor2d1351xfm" path="res://Scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://dh0pi0sieuej0" path="res://Assets/heart.png" id="2_6fbih"]
 [ext_resource type="Texture2D" uid="uid://ctg5c66e121di" path="res://Assets/heart_empty.png" id="3_t1xeu"]
 
