@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6f4hy2erg8pi"]
 
 [ext_resource type="Script" uid="uid://eor2d1351xfm" path="res://Scripts/hud.gd" id="1_bjfho"]
-[ext_resource type="Texture2D" uid="uid://dh0pi0sieuej0" path="res://Assets/heart.png" id="2_6fbih"]
+[ext_resource type="Texture2D" uid="uid://vwejgevondvm" path="res://Lyds sprites/No Back hearts.png" id="2_bjfho"]
 [ext_resource type="Texture2D" uid="uid://ctg5c66e121di" path="res://Assets/heart_empty.png" id="3_t1xeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wkxl"]
@@ -12,7 +12,7 @@ bg_color = Color(0, 0.6956519, 0.4283245, 1)
 
 [node name="HUD" type="CanvasLayer" unique_id=740164074]
 script = ExtResource("1_bjfho")
-heart_texture = ExtResource("2_6fbih")
+heart_texture = ExtResource("2_bjfho")
 empty_heart_texture = ExtResource("3_t1xeu")
 
 [node name="Root" type="Control" parent="." unique_id=178074904]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjjc7vyw4033l"]
 
 [ext_resource type="Script" uid="uid://o0ocdlnlywlf" path="res://Scripts/enemy.gd" id="1_hghv2"]
+[ext_resource type="Texture2D" uid="uid://3ls4itddvuwv" path="res://Lyds sprites/enemy/NoBack_skelly_sprite_sheet.png" id="2_1f0kj"]
 
 [sub_resource type="Gradient" id="Gradient_7xaro"]
 colors = PackedColorArray(0.5898064, 1.540184e-06, 3.85046e-07, 1, 0.5882353, 0, 0, 1)
@@ -11,6 +12,35 @@ gradient = SubResource("Gradient_7xaro")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssi1j"]
 radius = 3.0
 height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afpow"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nm47f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afpow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_287tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0830c")
+}],
+"loop": 1,
+"name": &"skelly",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Area2D" unique_id=1095419009]
 collision_layer = 4
@@ -39,3 +69,7 @@ offset_top = 1.0
 offset_right = 3.0
 offset_bottom = 2.0
 color = Color(0.19998118, 0.6916717, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=627524860]
+sprite_frames = SubResource("SpriteFrames_nm47f")
+animation = &"skelly"
