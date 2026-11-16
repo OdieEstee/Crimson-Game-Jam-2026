@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PowerUp" format=3 uid="uid://cr6ndijrbqtnt"]
+
+[ext_resource type="Script" uid="uid://ckr4834bdneg7" path="res://Scripts/PowerUps/stat_modifier.gd" id="1_pudn8"]
+[ext_resource type="Script" uid="uid://c1nayork34hiv" path="res://Scripts/PowerUps/power_up.gd" id="2_u42l0"]
+
+[sub_resource type="Resource" id="Resource_c04fo"]
+script = ExtResource("1_pudn8")
+stat = "SWIPE_DAMAGE"
+value = 4.0
+metadata/_custom_type_script = "uid://ckr4834bdneg7"
+
+[sub_resource type="Resource" id="Resource_d33u4"]
+script = ExtResource("1_pudn8")
+stat = "SWIPE_MAX_DISTANCE"
+value = 2.0
+metadata/_custom_type_script = "uid://ckr4834bdneg7"
+
+[resource]
+script = ExtResource("2_u42l0")
+title = "WOLVERINE MODE"
+description = "increase swipe damge by 300%
+increase swipe range by 200%"
+color = Color(0.5632683, 0.5609353, 0, 1)
+modifiers = Array[ExtResource("1_pudn8")]([SubResource("Resource_c04fo"), SubResource("Resource_d33u4")])
+metadata/_custom_type_script = "uid://c1nayork34hiv"

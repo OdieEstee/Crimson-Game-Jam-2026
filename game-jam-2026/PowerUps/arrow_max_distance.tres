@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PowerUp" format=3 uid="uid://dve61ngt3goqb"]
+
+[ext_resource type="Script" uid="uid://ckr4834bdneg7" path="res://Scripts/PowerUps/stat_modifier.gd" id="1_mkjjr"]
+[ext_resource type="Script" uid="uid://c1nayork34hiv" path="res://Scripts/PowerUps/power_up.gd" id="2_862e5"]
+
+[sub_resource type="Resource" id="Resource_q8ebj"]
+script = ExtResource("1_mkjjr")
+metadata/_custom_type_script = "uid://ckr4834bdneg7"
+
+[resource]
+script = ExtResource("2_862e5")
+title = "Bow Range increase"
+description = "increase the range by 25%"
+color = Color(0, 0.30865216, 0.08322092, 1)
+modifiers = Array[ExtResource("1_mkjjr")]([SubResource("Resource_q8ebj")])
+metadata/_custom_type_script = "uid://c1nayork34hiv"

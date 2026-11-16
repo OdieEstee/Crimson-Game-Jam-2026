@@ -1,7 +1,7 @@
 extends Node
 
 # Main stats
-@export var SPAWN_TIMER := 1.0
+@export var SPAWN_TIMER : float = 1.0
 
 # Player stats
 var PLAYER_SPEED = 100.0 # Player speed
