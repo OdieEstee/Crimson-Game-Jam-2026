@@ -16,7 +16,7 @@ func set_lives(lives: int, max_lives: int) -> void:
 	for child in hearts.get_children():
 		hearts.remove_child(child)
 		child.queue_free()
-	
+	#gay
 	# Add new lives stat to container
 	for i in max_lives:
 		var heart := TextureRect.new() # Create new heart
